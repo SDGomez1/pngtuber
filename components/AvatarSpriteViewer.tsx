@@ -1,4 +1,6 @@
 import Image from "next/image";
+import avatarSpeakingWebp from "@/app/avatar_speaking.webp";
+import avatarIdleWebp from "@/app/avatar_idle.png";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useEffect } from "react";
@@ -7,16 +9,12 @@ interface AvatarSpriteViewerProps {
   isActive: boolean;
   isSounding: boolean;
   startAudio: () => Promise<void>;
-  idleImageUrl: string;
-  speakingImageUrl: string;
 }
 
 const AvatarSpriteViewer = ({
   isActive,
   isSounding,
   startAudio,
-  idleImageUrl,
-  speakingImageUrl,
 }: AvatarSpriteViewerProps) => {
   useEffect(() => {
     startAudio();
@@ -37,13 +35,13 @@ const AvatarSpriteViewer = ({
       ) : (
         <>
           <Image
-            src={speakingImageUrl}
+            src={avatarSpeakingWebp}
             alt="Avatar Speaking"
             className={`w-[500px] h-[500px] `}
             style={{ display: !isSounding ? "none" : "block" }}
           />
           <Image
-            src={idleImageUrl}
+            src={avatarIdleWebp}
             alt="Avatar Idle"
             className={`w-[500px] h-[500px] `}
             style={{ display: isSounding ? "none" : "block" }}
